@@ -15,13 +15,13 @@ while counter >= 0:
     if ramps[counter] == 'none':
         a1 = max(a1, nums[counter][0])
         b1 = min(b1, nums[counter][1])
-    elif ramps[counter] == 'on':
-        a1 -= nums[counter][0]
-        b1 -= nums[counter][1]
+    elif ramps[counter] == 'off':
+        a1 += nums[counter][0]
+        b1 += nums[counter][1]
         a1 = max(0,a1)
     else:
-        a1 += nums[counter][1]
-        b1 += nums[counter][0]
+        a1 -= nums[counter][1]
+        b1 -= nums[counter][0]
     counter -= 1
 
 for x in range(N):
