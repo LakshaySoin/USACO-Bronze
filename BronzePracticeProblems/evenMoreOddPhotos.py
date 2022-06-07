@@ -1,53 +1,25 @@
-import sys
-
 N = int(input())
-nums = list(map(int, input().split(" ")))
-delete = []
-temp = []
-cnt = 0
-even = True
-findEven = False
-findOdd = False
+cows = list(map(int, input().split(" ")))
 
-while len(nums) != 0:
-    for i in range(N):
-        if even == True:
-            if nums[i] % 2 == 0:
-                cnt += 1
-                delete.append(i)
-                even = False
-                findEven = True
-        elif even == False:
-            if nums[i] % 2 == 1:
-                cnt += 1
-                delete.append(i)
-                even = True
-                findOdd = True
-    N -= len(delete)
-    for y in delete:
-        del nums[y]
-    print(cnt)
-    if findEven != True and even == True:
-        for i in range(N):
-            if nums[i] % 2 == 1:
-                temp.append(nums[i])
-        if len(temp) > 2:
-            cnt += 1
-            del nums[nums.index(temp[0])]
-            del nums[nums.index(temp[1])]
-            if len(nums) == 0:
-                    sys.exit()
-            temp = []
-    if findOdd != True and even == False:
-        for i in range(N):
-            if nums[i] % 2 == 0:
-                temp.append(nums[i])
-        if len(temp) > 2:
-            cnt += 1
-            del nums[nums.index(temp[0])]
-            del nums[nums.index(temp[1])]
-            if len(nums) == 0:
-                    sys.exit()
-            temp = []
-        
-        
+odd = 0
+even = 0
+
+for i in cows:
+    if i % 2 == 0:
+        even += 1
+    else:
+        odd += 1
+
+while even != odd or even - 1 == odd:
+    if even < odd:
+        if even - odd == 2:
+            odd += 1
+            break
+        else:
+            odd -= 2
+            even += 1
+    elif even > odd:
+        even = odd + 1
+        break
+
+print(even + odd)

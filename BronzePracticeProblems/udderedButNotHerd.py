@@ -1,13 +1,14 @@
-alpha = input()
+cowphabet = input()
 word = input()
-index = 0
-cnt = 0
-while len(word) != index:
-    for i in alpha:
-        if index == len(word):
-            break
-        elif word[index] == i:
-            index += 1
-    cnt += 1
 
-print(cnt)
+letters = {}
+ans = 1
+
+for i in range(len(cowphabet)):
+    letters[cowphabet[i]] = i
+
+for i in range(len(word) - 1):
+    if letters[word[i]] >= letters[word[i + 1]]:
+        ans += 1
+    
+print(ans)

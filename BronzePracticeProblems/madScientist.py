@@ -7,25 +7,15 @@ N = int(input())
 A = list(input())
 B = list(input())
 
-index = 0
-current = 0
-cnt = 0
-increase = False
+ans = 0
 
-for i in range(N):
-    if A[i] == B[i]:
-        for x in range(index, current):
-            if B[x] == "H":
-                B[x] = "G"
-            else:
-                B[x] = "H"
-            increase = True
-        if increase == True:
-            cnt += 1
+increase = True
+
+for x, y in zip(A, B):
+    if x != y:
         increase = False
-        current += 1
-        index = current
-    elif A[i] != B[i]:
-        current += 1
+    elif increase == False:
+        ans += 1
+        increase = True
 
-print(cnt)
+print(ans)

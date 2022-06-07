@@ -1,23 +1,20 @@
 import sys
 
 sys.stdin = open('sleepy.in','r')
-# sys.stdout = open('sleepy.out','w')
+sys.stdout = open('sleepy.out','w')
 
 N = int(input())
 data = list(map(int, input().split(" ")))
-steps = []
 
-for i in range(1, N + 1):
-    cnt = 0
-    curr = data.copy()
-    data.sort()
-    for i in range(1, N + 1):
-        for x in range(1, N + 1):
-            curr.insert(x, curr[0])
-            curr.pop(0)
-            cnt += 1
-            print(curr, data)
-            if curr == data:
-                steps.append(cnt)
+i = N - 1
 
-print(min(steps))
+temp = 0
+
+while i >= 0:
+    temp += 1
+    if data[i] < data[i - 1]:
+        ans = N - temp
+        break
+    i -= 1
+
+print(ans)
